@@ -14,7 +14,7 @@ from django.db.models import Case, When
 @login_required(login_url='/accounts/login/')
 def index(request):
     song = Song.objects.all()
-    return render(request, 'index.html', {'song':song})
+    
 
 def watchlater(request):
     if request.method== "POST":

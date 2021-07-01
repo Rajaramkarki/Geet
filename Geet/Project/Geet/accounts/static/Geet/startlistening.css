@@ -1,0 +1,81 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    
+}
+      
+.container .heading{
+    font-size: 40px;
+    font-weight: 1000;
+    padding:30px 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #40978a;
+}
+
+.container .music-container{
+    display:flex;
+    align-items: center;
+    flex-flow: column;
+    background: #fff;
+}
+
+.container .music-container .box{
+    height: 230px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    background: #f2f3f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #000;
+    overflow: hidden;
+    margin: 20px;
+}
+      
+.container .music-container .box .image{
+    height: 100%;
+    width: 25%;
+}
+
+.container .music-container .box .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.container .music-container .box .music{
+    width: 55%;
+    position: absolute;
+    padding-left: 300px;
+}
+
+.container .music-container .box .music audio{
+    width: 100%;
+    outline: none;
+}
+
+.container .music-container .box .music audio::-webkit-media-controls-eclosure{
+    background: none;
+}
+
+.container{
+    height:100vh;
+    width:100%;
+    background-size: cover;
+    background: #fff;
+    background-position: center;
+    position: relative;
+}
+
+.name{
+    font-size: 22px;
+    color: #273d3a;
+    padding-left: 10px;
+    position: relative;
+    bottom: 95px;
+    font-weight:900;
+}
+        
+        
+    

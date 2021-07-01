@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <title>Geet</title>
+       <link rel="stylesheet" href="{% static 'Geet/styles.css' %}">    
+    </head>
+    <body>
+        
+    <div class="container">
+        <div class="navbar">
+                <img src = "{% static 'Geet/logo2.png' %}" class = "logo">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'accounts:startlistening' %}">Start Listening</a></li>
+                    <li><a href="{% url 'accounts:upload' %}">Upload</a></li>
+                    <li><a href="#">Community</a></li>
+                    {% if not user.is_authenticated %}
+                    <li class = "dropdown"><button class="dropbtn">Connect</button>
+                        <div class = "dropdown-content">
+                            <a href="{% url 'accounts:login'%}">Log In</a>
+                            <a href="{% url 'accounts:signup'%}">Sign Up</a>
+
+                        
+                    </li> 
+                    {% endif %}
+                <li class = "dropdown1">
+                    {% if user.is_authenticated %}
+                    {% comment %} <img src = "{% static 'Geet/Profile.png' %}" class = "Userimage"> {% endcomment %}
+                    <button onclick="myFunction()" class="dropbtn1">Hello, {{request.user}}</button>
+                    <div id="myDropdown" class = "dropdown-content1">
+                          <a  class="logout" href="{% url 'logout' %}">Logout</a>
+                          <a class="dropdown-item" href="/accounts/listenlater/">Listen Later</a>
+                          <a class="channel" href="{% url 'accounts:channel' %}">Your Channel</a>
+
+                    </div>
+
+                    {% endif %}
+
+
+                </li>
+                </ul>
+            </div>
+
+                <div class = "content">
+                    <div class="left-col">
+                    <h1>GEET <br> FOR <br> BEAT</h1>
+                    </div>
+                </div>
+            </div>
+
+        <div class="footer-container">
+            <div class="footer">
+                <div class="footer-heading footer-1">
+                    <h2>About Us</h2>
+                    <a href="#">Our Story</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Team</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="footer-heading footer-2">
+                    <h2>Contact Us</h2>
+                    <a href="#">Jobs</a>
+                    <a href="#">Support</a>
+                    <a href="#">Help Center</a>
+                    <a href="#">Vendors</a>
+                </div>
+                <div class="footer-heading footer-3">
+                    <h2>Useful Links</h2>
+                    <a href="#">For Artists</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Something</a>
+                    <a href="#">Another thing</a>
+                </div>
+                <div class="footer-heading footer-4">
+                    <h2>Follow Us</h2>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+                <div class="footer-email-form">
+                    <h2>Join our newsletter</h2>
+                    <input type="email" placeholder = "Enter your email" id="footer-email">
+                    <button id = "footer-email-button">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+    <script>
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn1')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content1");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            }
+    </script>
+    </body>
+</html>

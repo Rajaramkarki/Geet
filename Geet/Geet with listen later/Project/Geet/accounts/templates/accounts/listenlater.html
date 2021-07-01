@@ -1,0 +1,59 @@
+{% extends "accounts/base.html" %}
+
+{%  block content %}
+
+  <body>
+     <div class="container">
+            <div class="heading">Listen Later</div>
+                
+            <div class="music-container">
+                {% if song|length < 1 %}
+                  <h1>Listen Later is Empty.</h1>
+                  {% endif %}
+
+        {% for i in song reversed %}
+            <div class="box">
+                <div class="image">
+                    <img src="{{i.image.url}}">
+                </div>
+                <div class="name">
+                    {{i.singer_name}} - {{i.song_name}}
+                </div>
+                <div class="music">
+                 <audio controls>
+                 <source src="{{i.song.url}}" type="audio/mpeg">
+                 </audio>
+                 <div class="row">
+                       
+                    <a href="/accounts/startlistening/{{i.song_id}}"><button class="btn btn-primary"style="margin-left: 2%;" >Listen Song</button></a>
+                
+               </div>
+                </div>
+            </div>
+        {% endfor %}
+
+            </div>
+        </div>
+        <script>
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn1')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content1");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            }
+    </script>
+
+  {% endblock %}

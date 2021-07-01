@@ -1,0 +1,56 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+
+
+<div class = "wrapper">
+ 
+  <div class ="title">
+    Upload your song
+  </div>
+  <form action="" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+  <div class = "form">
+    <div class = "input-field">
+      <label>Song name</label>
+      <input type="text" class ="input" name="Song name">
+    </div>
+
+    <div class = "input-field">
+      <label>Singer</label>
+      <input type="text" class ="input" name="Singer">
+    </div>
+
+    <div class = "input-field">
+      <label>Genre</label>
+      <div class = "custom-select">
+        <select name="Genre">
+          <option value=""> Select</option>
+          <option value="HipHip"> HipHop</option>
+          <option value="Rock"> Rock</option>
+          <option value="Classic"> Classic</option>
+        </select> 
+      </div>
+    </div>
+
+    <div class="input-field">
+      <label>Input Song</label>
+      <input type="file" class="input1" name="InputFile">
+    </div>
+
+    <div class="input-field">
+        <label>Input Image</label>
+        <input type="file" class="input1" name="InputImage">
+      </div>
+      
+    <div class="input-field">
+      <button type="submit" class="btn">Upload</button>
+   </div>
+
+  </div>
+</div>
+
+
+{% endblock %}
+
+

@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.db.models import Manager
+from django.urls import reverse_lazy
+
 
 # Create your models here.
 
@@ -25,7 +27,15 @@ class Postmodel(models.Model):
     updated=models.DateTimeField(auto_now=True)
     status=models.CharField(max_length=20,choices=STATUS_CHOICES,default="draft") 
     object=models.Manager()
-    published=Querymanager()            
+    published=Querymanager() 
+
+    def get_absolute_url(self):
+        return reverse_lazy('community:show_post',
+                            args=[self.publish.year,
+                            self.publish.month,
+                            self.publish.day,
+                            self.slug])
+
 
     class meta:
         ordering=('-publish',)  #sort post according to the publish date

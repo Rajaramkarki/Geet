@@ -1,9 +1,9 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.db.models.enums import Choices
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.db.models import Manager
 
 # Create your models here.
 
@@ -25,7 +25,7 @@ class Postmodel(models.Model):
     updated=models.DateTimeField(auto_now=True)
     status=models.CharField(max_length=20,choices=STATUS_CHOICES,default="draft") 
     object=models.Manager()
-    published=models.Querymanager()            
+    published=Querymanager()            
 
     class meta:
         ordering=('-publish',)  #sort post according to the publish date

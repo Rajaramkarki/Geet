@@ -26,5 +26,5 @@ urlpatterns = [
     path(r'', views.HomePage.as_view(), name="home"),
     path('accounts/', include("accounts.urls", namespace="accounts")),
     path(r'accounts/', include('django.contrib.auth.urls')),
-    path(r'community/',include("community.urls", namespace="community")),
+    path(r'community/',include("community.urls")),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

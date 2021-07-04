@@ -2,13 +2,14 @@ a {
     text-decoration: none;
 }
 
-/*Add the following compatibility code for IE as you can't animate background-size in IE*/
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
     .textOverImage {
         background-size: cover !important;
     }
 }
+
+
 
 .textOverImage {
     position: relative;

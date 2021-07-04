@@ -1,81 +1,76 @@
-*{
-    margin:0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    
-}
-      
-.container .heading{
-    font-size: 40px;
-    font-weight: 1000;
-    padding:30px 0;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: #40978a;
+a {
+    text-decoration: none;
 }
 
-.container .music-container{
-    display:flex;
-    align-items: center;
-    flex-flow: column;
-    background: #fff;
+/*Add the following compatibility code for IE as you can't animate background-size in IE*/
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+    .textOverImage {
+        background-size: cover !important;
+    }
 }
 
-.container .music-container .box{
-    height: 230px;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    background: #f2f3f5;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px #000;
-    overflow: hidden;
-    margin: 20px;
-}
-      
-.container .music-container .box .image{
-    height: 100%;
-    width: 25%;
-}
-
-.container .music-container .box .image img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.container .music-container .box .music{
-    width: 55%;
-    position: absolute;
-    padding-left: 300px;
-}
-
-.container .music-container .box .music audio{
-    width: 100%;
-    outline: none;
-}
-
-.container .music-container .box .music audio::-webkit-media-controls-eclosure{
-    background: none;
-}
-
-.container{
-    height:100vh;
-    width:100%;
-    background-size: cover;
-    background: #fff;
+.textOverImage {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    float: left;
+    margin: 10px;
+    background-size: 100%;
     background-position: center;
-    position: relative;
+    transition: 0.5s;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 0 4px #000;
 }
 
-.name{
-    font-size: 22px;
-    color: #273d3a;
-    padding-left: 10px;
-    position: relative;
-    bottom: 95px;
-    font-weight:900;
+.textOverImage:hover {
+    background-size: 110%;
 }
-        
-        
-    
+
+.textOverImage:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(90%);
+    /*use transform:translateY(100%); to remove footer*/
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 0 8px;
+    content: attr(data-title);
+    transition: 0.5s 0.1s;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.textOverImage:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 8px;
+    content: attr(data-text);
+    transition: 0.5s;
+    padding-top: 2em;
+    margin-top: 8px;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.textOverImage:hover:after {
+    transform: translateY(0);
+    transition: 0.5s 0.1s;
+    opacity: 1;
+}
+
+.textOverImage:hover:before {
+    transform: translateY(0);
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.5s;
+}

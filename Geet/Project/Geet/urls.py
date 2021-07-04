@@ -15,15 +15,16 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.conf.urls import url, include
+from django.urls import path
+from django.conf.urls import  include
 from .import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'admin/', admin.site.urls),
-    url(r'^$', views.HomePage.as_view(), name="home"),
-    url(r'accounts/', include("accounts.urls", namespace="accounts")),
-    url(r'accounts/', include('django.contrib.auth.urls')),
-    url(r'community/',include("community.urls", namespace="community")),
+    path(r'admin/', admin.site.urls),
+    path(r'', views.HomePage.as_view(), name="home"),
+    path('accounts/', include("accounts.urls", namespace="accounts")),
+    path(r'accounts/', include('django.contrib.auth.urls')),
+    path(r'community/',include("community.urls", namespace="community")),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

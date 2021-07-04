@@ -62,7 +62,7 @@ def startlistening(request):
     return render(request, 'accounts/startlistening.html',{'song':song})
 
 def songpost(request, id):
-    song=Song.objects.filter(sing_id=id).first()
+    song=Song.objects.filter(song_id=id).first()
     return render( request ,'accounts/songpost.html',{'song':song}  )
 
 def registration(request):

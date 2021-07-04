@@ -3,6 +3,7 @@
 {%  block content %}
 
   <body>
+      {% load static %}
     {% if message %}
     <script>
 
@@ -15,36 +16,13 @@
      }) 
     </script>
     {% endif %}
-     <div class="container">
-            <div class="heading">Start Listening</div>
-                
-            <div class="music-container">
-
-        {% for i in song reversed %}
-            <div class="box">
-                <div class="image">
-                    <img src="{{i.image.url}}">
-                </div>
-                <div class="name">
-                    {{i.singer_name}} - {{i.song_name}}
-                </div>
-                <div class="music">
-                 <audio controls>
-                 <source src="{{i.song.url}}" type="audio/mpeg">
-                 </audio>
-                 <div class="row">
-                    <form action="/accounts/listenlater/" method="POST">{% csrf_token %}
-                        <input type="hidden" name="video_id" value="{{i.song_id}}">
-                        <button type="submit" class="btn btn-outline-danger" style="margin-left: 2%;">Add to Listen Later</button>
-                    </form>
-                        <a href="/accounts/startlistening/{{i.song_id}}"><button class="btn btn-primary"style="margin-left: 2%; margin-top:1%" >Listen Song</button></a>
-                 </div>
-                </div>
-            </div>
-        {% endfor %}
-
+    {% for i in song reversed %}
+    <a href="/accounts/startlistening/{{i.song_id}}" class="textOverImage" style="background-image:url('{{i.image.url}}')"
+    data-title="{{i.song_name}}" data-text="Singer: {{i.singer_name}}"  ></a>
+    {% endfor %}
             </div>
         </div>
+    
         <script>
             /* When the user clicks on the button, 
             toggle between hiding and showing the dropdown content */
@@ -67,4 +45,4 @@
             }
     </script>
 
-  {% endblock %}
+{% endblock %}

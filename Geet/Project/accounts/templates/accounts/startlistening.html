@@ -3,34 +3,39 @@
 {%  block content %}
 
   <body>
-      {% load static %}
-    {% if message %}
-    <script>
+     <div class="container">
+            <div class="heading">Start Listening</div>
+                
+            <div class="music-container">
 
-     Swal.fire({
-         position: 'top-end',
-         icon: 'success',
-         title: '{{message}}',
-         showConfirmButton: false,
-         timer: 1500
-     }) 
-    </script>
-    {% endif %}
-    {% for i in song reversed %}
-    <a href="/accounts/startlistening/{{i.song_id}}" class="textOverImage" style="background-image:url('{{i.image.url}}')"
-    data-title="{{i.song_name}}" data-text="Singer: {{i.singer_name}}"  ></a>
-    {% endfor %}
+        {% for i in song reversed %}
+            <div class="box">
+            
+                <div class="image">
+                 
+                    <img src="{{i.image.url}}">
+            
+                </div>
+                <div class="name">
+                    {{i.singer_name}} - {{i.song_name}}
+                </div>
+                
+                <div class="music">
+                 <audio controls>
+                 <source src="{{i.song.url}}" type="audio/mpeg">
+                 </audio>
+                  <a href="/accounts/startlistening/{{i.song_id}}"><button>Listen Song</button></a> 
+                </div>
+            </div>
+        {% endfor %}
+
             </div>
         </div>
-    
         <script>
-            /* When the user clicks on the button, 
-            toggle between hiding and showing the dropdown content */
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
 
-            // Close the dropdown if the user clicks outside of it
             window.onclick = function(event) {
             if (!event.target.matches('.dropbtn1')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content1");
@@ -45,4 +50,4 @@
             }
     </script>
 
-{% endblock %}
+  {% endblock %}

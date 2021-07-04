@@ -61,9 +61,9 @@ def startlistening(request):
     song = Song.objects.all()
     return render(request, 'accounts/startlistening.html',{'song':song})
 
-def songpost(request, id):
-    song=Song.objects.filter(song_id=id).first()
-    return render( request ,'accounts/songpost.html',{'song':song}  )
+def player(request, id):
+    song = Song.objects.filter(song_id = id).first()
+    return render(request, 'accounts/player.html',{'song':song})
 
 def registration(request):
     if request.user.is_authenticated:

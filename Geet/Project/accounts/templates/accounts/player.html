@@ -1,0 +1,99 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="whole">
+  <div class="main">
+  	<p id="logo"><i class="fa fa-music"></i>Music</p>
+ 
+     <div class="left">
+      <img id="track_image" src = "{{song.image.url}}">
+         <div class="volume">
+            <p id="volume_show">90</p>
+            <i class="fa fa-volume-up" aria-hidden="true" id="volume_icon"></i>
+            <input type="range" min="0" max="100" value="90" onchange="volume_change()" id="volume">  
+         </div>
+
+     </div>
+ 
+
+  	 <div class="right">
+
+      <p id="title">{{song.song_name}}</p>
+      <p id="artist">{{song.singer_name}}</p>
+   
+  	 	<div class="middle">
+  	       {% comment %} <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button> {% endcomment %}
+      	   <button id="ppicon"><i class="fa fa-play" aria-hidden="true"></i></button>
+  	       {% comment %} <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button> {% endcomment %}
+  	   </div>
+
+
+        <div class="duration">
+           <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+        </div>
+           <button id="auto" onclick="autoplay_switch()">Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+  	</div>
+
+  </div>
+</div>   
+  <audio id = "mysong">
+   <source src = "{{song.song.url}}" type = "audio/mp3">
+   </audio>
+
+<script>
+let recent_volume= document.querySelector('#volume');
+let slider = document.querySelector('#duration_slider');
+timer = setInterval(range_slider ,1000);
+
+   var mysong = document.getElementById('mysong');
+   var ppicon = document.getElementById('ppicon');
+   var volume_icon = document.getElementById('volume_icon');
+
+   ppicon.onclick = function()
+   {
+     if(mysong.paused)
+     {
+        mysong.play();
+        ppicon.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
+     }
+     else{
+        mysong.pause();
+        ppicon.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+     }
+   }
+
+   volume_icon.onclick = function()
+   {
+      mysong.volume = 0;
+	   volume.value = 0;
+	   volume_show.innerHTML = 0;
+   }
+
+   function volume_change(){
+	   volume_show.innerHTML = recent_volume.value;
+	   mysong.volume = recent_volume.value / 100;
+   }
+
+   function change_duration(){
+      slider_position = mysong.duration * (mysong.value / 100);
+	   mysong.currentTime = slider_position;
+   }
+
+   function range_slider(){
+	let position = 0;
+        
+		if(!isNaN(mysong.duration)){
+		   position = mysong.currentTime * (100 / mysong.duration);
+		   slider.value =  position;
+	      }     
+
+      if(track.ended){
+       	 play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>'; 
+      }
+     }
+
+   
+</script>
+
+{% endblock %}

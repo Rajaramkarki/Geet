@@ -1,5 +1,25 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;   
+}
+
+body{
+    background:rgba(178,219,213, 0.3);
+    padding: 0 ;
+}
+
 a {
     text-decoration: none;
+}
+
+.container .heading{
+    font-size: 40px;
+    font-weight: 1000;
+    padding:30px 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #40978a;
 }
 
 @media all and (-ms-high-contrast: none),

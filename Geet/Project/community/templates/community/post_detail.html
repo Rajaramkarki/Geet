@@ -3,12 +3,25 @@
 
 {% block content %}
 
-<h1>{{ post.title }}</h1>
+<div class = "whole">
+    <div class = "right_side" style = "color:#00abff;">
+        <h1>{{ post.title }}</h1>
+        </div>
+        
+    <div class = "left_side">
+                    <h1>Side Feed<h1>
+                       
 
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-</p>
+    </div>
+</div>
 
-{{ post.body|linebreaksbr }}
+<div class = "user_posts_inside">
+        <p class="date">
+            Published {{ post.publish }} by {{ post.author }}
+        </p>
 
+        {{ post.body|linebreaksbr }}
+    </div>
+    <div class="sidefeed">
+    </div>
 {% endblock %}

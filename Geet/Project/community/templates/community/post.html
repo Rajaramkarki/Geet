@@ -2,19 +2,36 @@
 {% block title %}My Post {% endblock %}
 
 {% block content %}
-<h1>My Music Post</h1>
-{% for post in posts %}
-<h2>
-    <a href="{{ post.get_absolute_url }}">
-        {{ post.title }}
-             
-    </a>
-</h2>
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-</p>
+    <div class = "whole">
+            <div class = "right_side">
+            <h1>My Music Post</h1>
+            </div>
 
-{{ post.body|truncatewords:30|linebreaksbr }}
-{% endfor %}
-{% include 'community/pagination.html' with page=posts %}
+            <div class = "left_side">
+                <h1>Side Feed<h1>
+            </div>
+    </div>
+<div class="feedpart">
+    <div class = "user_posts">
+                {% for post in posts %}
+                <h2>
+                    <a class = "post_title" href="{{ post.get_absolute_url }}">
+                        {{ post.title }}
+                            
+                    </a>
+                </h2>
+                <p class="date">
+                    Published {{ post.publish }} by {{ post.author }}
+                </p>
+
+                {{ post.body|truncatewords:30|linebreaksbr }}
+                {% endfor %}
+
+            {% include 'community/pagination.html' with page=posts %}
+            </div>
+
+            <div class="sidefeed">
+                
+            </div>
+</div>
 {% endblock %}

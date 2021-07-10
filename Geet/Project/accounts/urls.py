@@ -9,12 +9,12 @@ urlpatterns = [
     path('login/', views.loginUser, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('upload/', views.upload, name="upload"),
-    path('startlistening/<int:id>/', views.player, name="player"),    path('listenlater/', views.watchlater, name="watchlater"),
+    path('startlistening/<int:id>/', views.player, name="player"),    
     path('startlistening/', views.startlistening, name="startlistening"),
     path('channel/',views.channel,name="channel"),
     path('', views.index, name="home"),
     path('r/<str:channel>', views.channel, name='channel'),
-    path('listenlater/', views.watchlater, name="watchlater"),
+    path('listenlater/', views.listenlater , name="listenlater"),
     path('history/',views.history ,name='history'),
 
 ]

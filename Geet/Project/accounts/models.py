@@ -16,9 +16,9 @@ class Song(models.Model):
         return self.song_name
 
 class Listenlater(models.Model):
-    watch_id=models. AutoField (primary_key=True)
+    listen_id=models. AutoField (primary_key=True)
     user = models.ForeignKey(User, on_delete= models.CASCADE)
-    video_id = models. CharField(max_length=10000000, default="")
+    later_id = models. CharField(max_length=10000000, default="")
 
 
 class History(models.Model):

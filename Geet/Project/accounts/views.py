@@ -16,31 +16,31 @@ def index(request):
     song = Song.objects.all()
     return render(request, 'index.html', {'song':song})
 
-def watchlater(request):
+def listenlater(request):
     if request.method== "POST":
         user=request.user
-        video_id=request.POST['video_id']
+        later_id=request.POST['later_id']
         
         
-        watch= Listenlater.objects.filter(user=user)
+        listen= Listenlater.objects.filter(user=user)
 
-        for i in watch:
+        for i in listen:
 
-            if video_id== i.video_id:
+            if later_id== i.later_id:
                 message= "Your Song is already added"
                 break
         else:
-            watchlater = Listenlater(user=user, video_id = video_id)
+            watchlater = Listenlater(user=user, later_id = later_id)
             watchlater.save()
             message="Your Song is successfuly added"
         
-        song = Song.objects.filter(song_id=video_id).first()
+        song = Song.objects.filter(song_id=later_id).first()
         return render(request, f"accounts/player.html", {'song': song, "message": message})
     
     wl=Listenlater.objects.filter(user=request.user)
     ids=[]
     for i in wl:
-        ids.append(i.video_id)
+        ids.append(i.later_id)
         
     preserved = Case(*[When(pk=pk, then= pos) for pos, pk in enumerate(ids)])
     song= Song.objects.filter(song_id__in=ids).order_by(preserved)

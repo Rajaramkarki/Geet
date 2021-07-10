@@ -1,6 +1,18 @@
 {% extends 'accounts/base.html' %}
 {% block content %}
 {% load static %}
+{% if message %}
+<script>
+
+ Swal.fire({
+     position: 'top-end',
+     icon: 'success',
+     title: '{{message}}',
+     showConfirmButton: false,
+     timer: 1500
+ }) 
+</script>
+{% endif %}
 
 <div class="whole">
   <div class="main">
@@ -33,6 +45,14 @@
            <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
         </div>
            <button id="auto" onclick="autoplay_switch()">Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+           <div>
+            {% if user.is_authenticated %} 
+            <form action="/accounts/listenlater/" method="POST">{% csrf_token %}
+                <input type="hidden" name="video_id" value="{{song.song_id}}">
+                <button id="auto" type="submit" class="btn btn-outline-danger" style="margin-left: 2%;">Add to Listen Later</button>
+             </form>  
+             {% endif %}
+           </div>
   	</div>
 
   </div>

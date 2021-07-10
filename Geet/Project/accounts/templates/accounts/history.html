@@ -4,20 +4,20 @@
 
   <body>
      <div class="container3">
-            <div class="heading">Listen Later</div>
+            <div class="heading">History</div>
                 
             <div class="music-container">
                 {% if song|length < 1 %}
-                  <h1>Listen Later is Empty.</h1>
-                  {% endif %}
+                  <h1>History is Empty.</h1>
+                {% endif %}
 
-                  {% for i in song reversed %}
-        <div class = "box">
-        <a href="/accounts/startlistening/{{i.song_id}}" class="textOverImage" style="background-image:url({{i.image.url}})"
-        data-title="{{i.song_name}}" data-text="{{i.singer_name}} "></a>
-        {% endfor %}
-        </div>
-     </div>
+                {% for i in song  %}
+                <div class = "box">
+                <a href="/accounts/startlistening/{{i.song_id}}" class="textOverImage" style="background-image:url({{i.image.url}})"
+                data-title="{{i.song_name}}" data-text="{{i.singer_name}} "></a>
+                {% endfor %}
+                </div>
+              </div>
         <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");

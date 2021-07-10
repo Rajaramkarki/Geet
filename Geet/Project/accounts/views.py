@@ -25,16 +25,17 @@ def watchlater(request):
         watch= Listenlater.objects.filter(user=user)
 
         for i in watch:
+
             if video_id== i.video_id:
-                message= "Your song is already added"
+                message= "Your Song is already added"
                 break
         else:
             watchlater = Listenlater(user=user, video_id = video_id)
             watchlater.save()
-            message="Your song is successfuly added"
+            message="Your Song is successfuly added"
         
-        song = Song.objects.all()
-        return render(request, 'accounts/startlistening.html', { 'song':song,  "message": message})
+        song = Song.objects.filter(song_id=video_id).first()
+        return render(request, f"accounts/player.html", {'song': song, "message": message})
     
     wl=Listenlater.objects.filter(user=request.user)
     ids=[]
@@ -111,6 +112,24 @@ def channel(request, channel):
         
 
     return render(request, "accounts/channel.html")
+
+def history(request):
+    if request.method== "POST":
+        user=request.user
+        music_id=request.POST['music_id']
+        history = History(user=user, music_id = music_id)
+        history.save()
         
+        return redirect(f"/accounts/startlistening/{music_id}")
+    
+    history=History.objects.filter(user=request.user).order_by('-done_at')
+    H=[]
+    for i in history:
+        H.append(i.music_id)
+    
+    preserved = Case(*[When(pk=pk, then= pos) for pos, pk in enumerate(H)])
+    song= Song.objects.filter(song_id__in=H).order_by(preserved)
+
+    return render(request, 'accounts/history.html',{'song':song})
 
 

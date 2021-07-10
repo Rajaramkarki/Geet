@@ -25,3 +25,4 @@ class History(models.Model):
     history_id =models. AutoField (primary_key=True)
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     music_id = models. CharField(max_length=10000000, default="")
+    done_at = models.DateTimeField(auto_now_add=True)

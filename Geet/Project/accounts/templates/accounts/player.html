@@ -49,7 +49,7 @@
             {% if user.is_authenticated %} 
             <form action="/accounts/listenlater/" method="POST">{% csrf_token %}
                 <input type="hidden" name="later_id" value="{{song.song_id}}">
-                <button id="auto" type="submit" class="btn btn-outline-danger" style="margin-left: 2%;">Add to Listen Later</button>
+                <button type="submit" class="listenlater" style="margin-left: 2%;">Add to Listen Later</button>
              </form>  
              {% endif %}
            </div>

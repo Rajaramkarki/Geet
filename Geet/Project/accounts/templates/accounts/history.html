@@ -13,8 +13,13 @@
 
                 {% for i in song  %}
                 <div class = "box">
-                  <a href="/accounts/startlistening/{{i.song_id}}" ><buttons class="textOverImage" style="background-image:url({{i.image.url}})"
-                    data-title="{{i.song_name}}" data-text="{{i.singer_name}} "></buttons></a>
+                  <form action="/accounts/history/" id="his"method="POST" >{% csrf_token %}
+                    <input type="hidden" name="music_id" value={{i.song_id}} >
+                    <a href="/accounts/startlistening/{{i.song_id}}"><button class="textOverImage" style="background-image:url({{i.image.url}})" 
+                    data-title="{{i.song_name}}" data-text="{{i.singer_name}} ">
+                    </button>
+                    </a>
+                </form >
                 {% endfor %}
                 </div>
               </div>

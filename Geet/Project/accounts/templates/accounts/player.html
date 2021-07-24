@@ -42,7 +42,7 @@
 
 
         <div class="duration">
-           <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+           <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()" >
         </div>
            <button id="auto" onclick="autoplay_switch()">Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
            <div>
@@ -57,20 +57,21 @@
 
   </div>
 </div>   
-  <audio id = "mysong">
+  <audio id = "mysong" metadata>
    <source src = "{{song.song.url}}" type = "audio/mp3">
    </audio>
 
 <script>
 let recent_volume= document.querySelector('#volume');
 let slider = document.querySelector('#duration_slider');
+let mysong = document.querySelector('#mysong');
+var ppicon = document.getElementById('ppicon');
+var volume_icon = document.getElementById('volume_icon');
 timer = setInterval(range_slider ,1000);
 
-   var mysong = document.getElementById('mysong');
-   var ppicon = document.getElementById('ppicon');
-   var volume_icon = document.getElementById('volume_icon');
 
-   ppicon.onclick = function()
+
+    ppicon.onclick = function()
    {
      if(mysong.paused)
      {
@@ -81,7 +82,7 @@ timer = setInterval(range_slider ,1000);
         mysong.pause();
         ppicon.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
      }
-   }
+   } 
 
    volume_icon.onclick = function()
    {
@@ -92,23 +93,27 @@ timer = setInterval(range_slider ,1000);
 
    function volume_change(){
 	   volume_show.innerHTML = recent_volume.value;
-	   mysong.volume = recent_volume.value / 100;
+	   mysong.volume = recent_volume.value / 100; 
+      
    }
-
-   function change_duration(){
-      slider_position = mysong.duration * (mysong.value / 100);
-	   mysong.currentTime = slider_position;
-   }
+    
+    function change_duration(){
+      
+      mysong.currentTime = mysong.duration * (slider.value / 100);
+      console.log(mysong.duration * (slider.value / 100));
+      console.log(mysong.currentTime);
+   } 
 
    function range_slider(){
 	let position = 0;
         
 		if(!isNaN(mysong.duration)){
-		   position = mysong.currentTime * (100 / mysong.duration);
-		   slider.value =  position;
+		   slider_position = mysong.currentTime * (100 / mysong.duration);
+		   slider.value =  slider_position;
+        
 	      }     
 
-      if(track.ended){
+      if(mysong.ended){
        	 play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>'; 
       }
      }

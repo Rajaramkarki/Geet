@@ -60,12 +60,11 @@
 	height: 350px;
 	width: 50%;
 	border-radius: 10px;
-	
 }
 
 /* both range slider part */
 input[type="range"] {
-	
+	-webkit-appearance: none;
 	width: 50%;
 	outline: none;
 	height: 0.0015%;

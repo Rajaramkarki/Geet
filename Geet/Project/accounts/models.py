@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
+from community.models import Postmodel
 
 # Create your models here.
 class Song(models.Model):

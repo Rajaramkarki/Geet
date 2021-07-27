@@ -4,39 +4,55 @@
     text-decoration:none; 
 }
 
-.whole {
-    float: left;
+.parent {
+    width: 99%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 40px repeat(2, 1fr) 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
   }
   
 .right_side {
-    width: 60%;
-    position: relative;
-    bottom: 300px;
+    grid-area: 1 / 1 / 2 / 2; 
+    /* background-color: aquamarine; */
     padding-left: 10px;
+    text-align: center;
 }
 
 .left_side{
-    padding-left: 120px;
-    width: 30%;
-    position: relative;
-    bottom: 300px;  
+    grid-area: 1 / 2 / 2 / 3; 
+    /* background-color: cornflowerblue; */
+    text-align: center;
 }
 
-
-
 .sidefeed{
-        position: absolute;
-        left: 980px;
-        top: 180px; 
-        right: 20px;
+    grid-area: 2 / 2 / 5 / 3; 
+    background-color: #aee6ddbe;
 }
 
 .user_posts{
-      width: 60%;
-      padding-left: 20px;
-      padding-top: 80px;
-      position: absolute;
-      
+    grid-area: 2 / 1 / 4 / 2; 
+    /* background-color: darkkhaki; */
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    text-align: justify;
+    background-color: #aee6ddbe;
+}
+
+.user_posts h2{
+    padding-top: 20px;
+}
+
+.divv4 { 
+    grid-area: 4 / 1 / 5 / 2; 
+    /* background-color: aqua; */
+    padding-left: 10px;
+}
+
+.divv4 .newpost{
+    text-decoration: none;
 }
 
 .user_posts_inside{
@@ -47,16 +63,13 @@
 }
 
 
-
 h1 { 
     font-weight:normal;
     border-bottom:1px solid #bbb;
-    padding:0 0 10px 0;
 }
 
 h2 {
     font-weight:normal;
-    margin:30px 0 0;
 }
 .date { 
     color:rgb(189, 110, 110);
@@ -65,53 +78,10 @@ h2 {
     font-style: italic; 
 }
 
-/* pagination */
+
 .pagination { 
     margin:40px 0; 
     font-weight:bold;
 
 }
 
-/* forms */
-label { 
-    float:left;
-    clear:both;
-    color:#333;
-    margin-bottom:4px; 
-}
-input, textarea { 
-    clear:both;
-    float:left;
-    margin:0 0 10px;
-    background:#ededed;
-    border:0;
-    padding:6px 10px;
-    font-size:12px;
-}
-input[type=submit] {
-    font-weight:bold;
-    background:#00abff;
-    color:#fff;
-    padding:10px 20px;
-    font-size:14px;
-    text-transform:uppercase; 
-}
-.errorlist { 
-    color:#cc0033;
-    float:left;
-    clear:both;
-    padding-left:10px; 
-}
-
-/* comments */
-.comment {
-    padding:10px;
-}
-.comment:nth-child(even) {
-    background:#efefef;
-}
-.comment .info {
-    font-weight:bold;
-    font-size:12px;
-    color:#666;
-}

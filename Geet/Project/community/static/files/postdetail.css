@@ -1,0 +1,146 @@
+.parent1 {
+    width: 99%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 2fr;
+    grid-template-rows:80px repeat(2, 1fr) 70px 4fr;
+    grid-auto-columns: max-content;
+    grid-column-gap: 30px;
+    grid-row-gap: 2px;
+    }
+    
+    .div1 { 
+        grid-area: 1 / 1 / 2 / 4; 
+        padding-left: 10px;
+        text-align: center;
+    }
+
+    .div2 { 
+        grid-area: 1 / 4 / 2 / 5; 
+        text-align: center;
+    }
+
+    .div3 { 
+        grid-area: 2 / 4 / 6 / 5; 
+        background-color: #aee6ddbe;
+    }
+
+    .div4 { 
+        grid-area: 2 / 1 / 4 / 4; 
+        padding: 15px;
+        text-align:justify;
+        background-color: #aee6ddbe;
+    }
+
+    .div5 { 
+        grid-area: 4 / 1 / 5 / 2; 
+        padding-left: 15px;
+        text-decoration: none;
+    }
+
+    .div6 { 
+        grid-area: 4 / 2 / 5 / 3; 
+        text-decoration: none;
+    }
+
+    .div7 { 
+        grid-area: 4 / 3 / 5 / 4; 
+        text-decoration: none;
+    }
+
+    .div8 { 
+        grid-area: 5 / 1 / 6 / 4; 
+        padding-left: 15px;
+    }
+
+
+ .div8 .mainbox{
+    padding-top: 50px;
+}
+
+.div8 .mainbox .form{
+    width: 100%
+}
+
+.div8 .mainbox .form .input-field{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.div8 .mainbox .form .input-field label{
+    width: 150px;
+    color:#000000;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.div8 .mainbox .form .input-field .input{
+    width:100%;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding: 4px 5px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.div8 .mainbox .form .input-field .btn{
+    width: 20%;
+    margin-top: 10px;
+    padding: 4px 5px;
+    font-size: 15px;
+    margin-left: 50px;
+    border: 0;
+    background:#1e9b88;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+}
+
+.div8 .mainbox .form .input-field .btn:last-child{
+    margin-bottom: 0;
+}
+
+.div8 .mainbox .form .input-field .btn:hover{
+    background:#5ebdae ;
+}
+
+
+.div8 .mainbox h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.div8 .mainbox input{
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #86b0b6;
+}
+
+.div8 .mainbox input:focus{
+    border: 1px solid #000;
+    outline: 0;
+}
+
+.div8 .mainbox textarea{
+    width: 100%;
+    height: 15px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #86b0b6;
+}
+
+.div8 .mainbox textarea:focus{
+    border: 1px solid #000;
+    outline: 0;
+}
+
+
+
+.div8 .mainbox button:hover{
+    background-color: #5ebdae;
+}

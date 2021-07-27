@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.db.models import Manager
 from django.urls import reverse
+from django.conf import settings
 
 
 # Create your models here.
@@ -31,13 +32,11 @@ class Postmodel(models.Model):
     published = Querymanager()
 
     def get_absolute_url(self):
-        return reverse('community:show_post',
-                       args=(self.publish.year,
-                             self.publish.month,
-                             self.publish.day,
-                             self.slug))
+        return reverse('community:post_detail',
+                            kwargs={'pk': self.pk})
 
-    #class meta:
+         #class meta:
+
     #    ordering = ('-publish',)  # sort post according to the publish date
 
     def __str__(self):
@@ -47,3 +46,19 @@ class Postmodel(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Postmodel, self).save(*args, **kwargs)
+
+
+class comment(models.Model):
+    post=models.ForeignKey(Postmodel,on_delete=models.CASCADE,related_name='comments')
+    user= models.ForeignKey(User,on_delete=models.CASCADE,default=True)
+    email=models.EmailField()
+    body=models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active=models.BooleanField(default=True)
+
+    class meta:
+        ordering = 'created'
+
+    def __str__(self):
+        return f'comment by {self.user} on {self.post}'

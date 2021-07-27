@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "accounts",
     "community",
-    
+    "crispy_forms"
 ]
 
 MIDDLEWARE = [
@@ -78,10 +78,13 @@ WSGI_APPLICATION = 'Geet.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hzjxlnbp',
+        'USER': 'hzjxlnbp',
+        'PASSWORD': 'KU-qL-Cn3Ui7jtGBGdalwS-bLZezUtMR',
+        'HOST': 'satao.db.elephantsql.com',
+     }
 }
 
 

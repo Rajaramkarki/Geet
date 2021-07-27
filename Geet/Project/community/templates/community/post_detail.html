@@ -3,25 +3,101 @@
 
 {% block content %}
 
-<div class = "whole">
-    <div class = "right_side" style = "color:#00abff;">
+
+
+<div class="parent1">
+    <div class="div1" style = "color:#00abff;"> 
         <h1>{{ post.title }}</h1>
-        </div>
-        
-    <div class = "left_side">
-                    <h1>Side Feed<h1>
-                       
-
     </div>
-</div>
 
-<div class = "user_posts_inside">
+    <div class="div2">
+        <h1>Side Feed<h1>
+    </div>
+
+    <div class="div3"> 
+        <p>here will be sidefeed content</p>
+    </div>
+
+    <div class="div4"> 
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
 
-        {{ post.body|linebreaksbr }}
+        {{ post.body|linebreaksbr }}  
+        
+        </p>
+
+          <audio id = "mysong" controls style="padding-top:10px;">
+                <source src = "{{song.song.url}}" type = "audio/mp3">
+        </audio>
+
     </div>
-    <div class="sidefeed">
+
+{% if post.author == user %}
+    <div class="div5"> 
+        <button type="submit"><a href="{% url 'community:update-post' post.id %}">Update</a></button>
     </div>
+
+    <div class="div6"> 
+        <button type="submit"><a href="{% url 'community:post-delete' post.id %}">Delete</a></button>
+    </div>
+{% endif %}
+
+    <div class="div7"> 
+        <p><button type="submit" href="{% url 'community:post_share' post.id %}">share</button>
+    </div>
+
+    <div class="div8"> 
+        {% for comment in comments %}
+
+        <p class="info">
+            Comment {{ forloop.counter }} by {{ comment.user }} - {{ comment.created_at }}
+        </p>
+        {{ comment.body|linebreaks }}
+
+        {% empty %}
+        <p>There are no comments yet.</p>
+        {% endfor %}
+
+        {% if new_comment %}
+        <h2>Your Comment has been added</h2>
+        {% else %}
+
+        {% if user.is_authenticated %}
+       <div class = "mainbox">
+                 <h2>Add a new Comment</h2>
+            <form method="post">
+                {% csrf_token %}
+            <div class = "form">
+                <div class = "input-field">
+                    <label>Email</label>
+                    <input style="height:30px; width:200px;" type="email" class ="input" name="email" placeholder="Enter your Email">
+                </div>
+
+                <div class = "input-field">
+                    <label>Comment</label>
+                    <textarea style="resize: none; height:100px; width:200px;" type="text" class ="input" name="body" placeholder="Enter your comment"></textarea>
+                </div>
+
+                <div class="input-field">
+                    <button type="submit" class="btn">Add comment</button>
+                </div>
+                
+            </div>
+            
+            </form>
+       </div>
+        {% else %}
+
+        <p class="text-center">
+        Only registered users can post comments. Please,
+        <a href="{% url 'accounts:login' %}">login</a>.
+        </p>
+        {% endif %}
+
+        {% endif %}
+    </div>
+
+</div>
+
 {% endblock %}

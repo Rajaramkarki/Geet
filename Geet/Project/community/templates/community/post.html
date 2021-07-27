@@ -2,36 +2,49 @@
 {% block title %}My Post {% endblock %}
 
 {% block content %}
-    <div class = "whole">
+<div class = "parent">
             <div class = "right_side">
             <h1>My Music Post</h1>
+            
             </div>
 
             <div class = "left_side">
                 <h1>Side Feed<h1>
             </div>
-    </div>
-<div class="feedpart">
+   
     <div class = "user_posts">
                 {% for post in posts %}
                 <h2>
                     <a class = "post_title" href="{{ post.get_absolute_url }}">
                         {{ post.title }}
-                            
                     </a>
                 </h2>
                 <p class="date">
                     Published {{ post.publish }} by {{ post.author }}
                 </p>
-
-                {{ post.body|truncatewords:30|linebreaksbr }}
+                
+                {{ post.body|truncatewords:35|linebreaksbr }}
+                
                 {% endfor %}
-
-            {% include 'community/pagination.html' with page=posts %}
-            </div>
+            
+    </div>
 
             <div class="sidefeed">
-                
+                <p>here goes sidefeed content</p>
             </div>
+
+            <div class = "divv4">
+                {% include 'community/pagination.html' with page=posts %}
+                <div class="createown">
+                    <label>Create your own post </label>
+                    <button type="submit" ><a class="newpost" href="{% url 'community:create-post' %}">Add post</a></button>
+                </div>
+            </div>
+
+            
+
 </div>
+
+
+
 {% endblock %}

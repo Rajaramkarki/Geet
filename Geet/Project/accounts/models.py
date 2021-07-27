@@ -19,6 +19,7 @@ class Listenlater(models.Model):
     listen_id=models. AutoField (primary_key=True)
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     later_id = models. CharField(max_length=10000000, default="")
+    added_at = models.DateTimeField(auto_now_add=True)
 
 
 class History(models.Model):

@@ -17,6 +17,7 @@ def index(request):
     return render(request, 'index.html', {'song':song})
 
 def listenlater(request):
+    
     if request.method== "POST":
         user=request.user
         later_id=request.POST['later_id']
@@ -37,7 +38,7 @@ def listenlater(request):
         song = Song.objects.filter(song_id=later_id).first()
         return render(request, f"accounts/player.html", {'song': song, "message": message})
     
-    wl=Listenlater.objects.filter(user=request.user)
+    wl=Listenlater.objects.filter(user=request.user).order_by('-added_at')
     ids=[]
     for i in wl:
         ids.append(i.later_id)

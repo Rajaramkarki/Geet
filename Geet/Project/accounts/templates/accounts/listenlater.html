@@ -11,10 +11,28 @@
                   <h1>Listen Later is Empty.</h1>
                   {% endif %}
 
-                  {% for i in song reversed %}
+                  {% for i in song  %}
         <div class = "box">
-        <a href="/accounts/startlistening/{{i.song_id}}" class="textOverImage" style="background-image:url({{i.image.url}})"
-        data-title="{{i.song_name}}" data-text="{{i.singer_name}} "></a>
+          <form action="/accounts/history/" id="his"method="POST" >{% csrf_token %}
+            <input type="hidden" name="music_id" value={{i.song_id}} >
+              <div class="image">
+                  <img src="{{i.image.url}}">
+              </div>
+              <div class="name">
+                  {{i.singer_name}} - {{i.song_name}}
+              </div>
+              <div class="music">
+               <audio controls>
+               <source src="{{i.song.url}}" type="audio/mpeg">
+               </audio>
+               <div class="row">
+                     
+                  <a href="/accounts/startlistening/{{i.song_id}}"><button class="btn btn-primary"style="margin-left: 2%;" >Listen Song</button></a>
+              
+             </div>
+              </div>
+          </div>
+        </form >
         {% endfor %}
         </div>
      </div>

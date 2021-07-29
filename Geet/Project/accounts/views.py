@@ -143,7 +143,6 @@ def history(request):
     return render(request, 'accounts/history.html',{'song':song})
 
 
-<<<<<<< Updated upstream
 def search(request):
     if request.method=="POST":
         searched = request.POST['searched']
@@ -152,7 +151,5 @@ def search(request):
         return render(request, 'accounts/search.html',{'searched':searched,'song':song})
     else:
         return render(request, 'accounts/search.html')
-=======
 def community(request):
     return render(request, 'accounts/community.html')
->>>>>>> Stashed changes

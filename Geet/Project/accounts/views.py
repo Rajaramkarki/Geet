@@ -109,10 +109,19 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
-def channel(request, channel):
+def channel(request):
         
-
-    return render(request, "accounts/channel.html")
+    history=History.objects.filter(user=request.user).order_by('-done_at')
+    H=[]
+    for i in history:
+        H.append(i.music_id)
+    
+    preserved = Case(*[When(pk=pk, then= pos) for pos, pk in enumerate(H)])
+    Hsong= Song.objects.filter(song_id__in=H).order_by(preserved)
+    
+    
+   
+    return render(request, "accounts/channel.html",{'song':Hsong},)
 
 def history(request):
     if request.method== "POST":
@@ -134,6 +143,7 @@ def history(request):
     return render(request, 'accounts/history.html',{'song':song})
 
 
+<<<<<<< Updated upstream
 def search(request):
     if request.method=="POST":
         searched = request.POST['searched']
@@ -142,3 +152,7 @@ def search(request):
         return render(request, 'accounts/search.html',{'searched':searched,'song':song})
     else:
         return render(request, 'accounts/search.html')
+=======
+def community(request):
+    return render(request, 'accounts/community.html')
+>>>>>>> Stashed changes

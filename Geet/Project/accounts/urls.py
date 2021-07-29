@@ -13,7 +13,8 @@ urlpatterns = [
     path('startlistening/', views.startlistening, name="startlistening"),
     path('channel/',views.channel,name="channel"),
     path('', views.index, name="home"),
-    path('r/<str:channel>', views.channel, name='channel'),
+    path('community/', views.community, name="community"),
+  
     path('listenlater/', views.listenlater , name="listenlater"),
     path('history/',views.history ,name='history'),
     path('search/',views.search ,name='search'),

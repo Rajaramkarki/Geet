@@ -37,7 +37,7 @@
   	 	<div class="middle">
   	       <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
       	   <button id="ppicon"><i class="fa fa-play" aria-hidden="true"></i></button>
-  	       <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+  	       <button onclick="next_song()" id="next"><a href="/accounts/startlistening/{{song.song_id}}/"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
   	   </div>
 
 
@@ -99,7 +99,6 @@ timer = setInterval(range_slider ,1000);
    }
     
     function change_duration(){
-      
       mysong.currentTime = mysong.duration * (slider.value / 100);
       console.log(mysong.duration * (slider.value / 100));
       console.log(mysong.currentTime);

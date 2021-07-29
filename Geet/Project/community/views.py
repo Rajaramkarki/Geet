@@ -8,12 +8,19 @@ from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic import CreateView,UpdateView,DeleteView
 from accounts.models import Song
+from taggit.models import Tag
+from django.db.models import Count
 
 # Create your views here.
 
-def Post_list(request):
+def Post_list(request,tag_slug=None):
     object_list=Postmodel.published.all().order_by('-publish')
-    paginator=Paginator(object_list,4)
+    tag=None
+
+    if tag_slug:
+        tag=get_object_or_404(Tag,slug=tag_slug)
+        object_list=object_list.filter(tags__in=[tag])
+    paginator=Paginator(object_list,5)
     page=request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -21,7 +28,7 @@ def Post_list(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    return render(request,'community/post.html',{'page':page,'posts':posts})
+    return render(request,'community/post.html',{'page':page,'posts':posts,'tag':tag})
 
 
 def post_detail(request,pk):
@@ -38,15 +45,20 @@ def post_detail(request,pk):
             new_comment.post = post
             new_comment.save()
     else:
+        post_tags_ids = post.tags.values_list('id',flat=True)   # it returns id of post which have tags
+        similar_posts=Postmodel.published.filter(tags__in =post_tags_ids.exclude(id=post.id))
+        similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags','-publish')[:4] #Count gives the number of same tags belonging to each post
+
         comment_form = CommentForm()
 
     return render(request,'community/post_detail.html',{'post':post,'comments':comments,
-                                                        'new_comment':new_comment,'comment_form':comment_form})   
+                                                        'new_comment':new_comment,'comment_form':comment_form,
+                                                        'similar_posts':similar_posts})   
 
 
 class Postcreateview(LoginRequiredMixin,CreateView):
     model=Postmodel
-    fields=['title','slug','body','status']
+    fields=['title','slug','body','tags','status']
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -54,20 +66,21 @@ class Postcreateview(LoginRequiredMixin,CreateView):
 
 def sharing(request, id):
     model=Postmodel
-    fields=['title','slug','body','status']
+    fields=['title','slug','body','tags','status']
     song = Song.objects.filter(song_id = id).first()
     return render(request, 'community/postmodel_form.html',{'song':song})
 
-class Postupdateview(LoginRequiredMixin,UpdateView,UserPassesTestMixin):
+class Postupdateview(LoginRequiredMixin,UpdateView,UserPassesTestMixin):   # it allows you to define a test function which must return True
+                                                                            #if the current user can access the view.
     model=Postmodel
-    fields=['title','slug','body','status']
+    fields=['title','slug','body','tags','status']
     
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
-        post = self.get_object()
+        post = self.get_object()                  #if author and user are same then return true 
         if self.request.user == post.author:
             return True
         return False

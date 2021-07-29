@@ -1,0 +1,29 @@
+{% extends "accounts/base.html" %}
+
+{%  block content %}
+<centre>
+    {%if searched%}
+        <div class="heading">You searched for {{searched}}</div>
+        <br/>
+        {% for i in song reversed %}
+        <div class = "box">
+        {% if user.is_authenticated %}
+        <form action="/accounts/history/" id="his"method="POST" >{% csrf_token %}
+            <input type="hidden" name="music_id" value={{i.song_id}} >
+            <a href="/accounts/startlistening/{{i.song_id}}"><button class="textOverImage" style="background-image:url({{i.image.url}})" 
+            data-title="{{i.song_name}}" data-text="{{i.singer_name}} ">
+            </button>
+            </a>
+        </form >
+        {%else%}
+        <a href="/accounts/startlistening/{{i.song_id}}" class="textOverImage" style="background-image:url({{i.image.url}})"
+        data-title="{{i.song_name}}" data-text="{{i.singer_name}} "></a>
+        {%endif%}
+        
+        </div>
+        {% endfor %}
+    {%else%}
+        <div class="heading">You didn't search</div>
+    {%endif%}
+</centre>
+{%endblock%}

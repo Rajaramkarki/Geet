@@ -7,6 +7,7 @@ app_name='community'
 urlpatterns=[
     
     path('post/', views.Post_list, name='post'),
+    path('post/tag/<slug:tag_slug>',views.Post_list, name='post_list_by_tag'),
     path('post/<int:pk>', views.post_detail, name='post_detail'),
     path('<int:post_id>/share/',views.post_share, name='post_share'),
     path('post/create/',views.Postcreateview.as_view(),name='create-post'),

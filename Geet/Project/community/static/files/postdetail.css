@@ -2,7 +2,7 @@
     width: 99%;
     display: grid;
     grid-template-columns: repeat(3, 1fr) 2fr;
-    grid-template-rows:80px repeat(2, 1fr) 70px 4fr;
+    grid-template-rows:80px repeat(2, 1fr) 70px 1fr;
     grid-auto-columns: max-content;
     grid-column-gap: 30px;
     grid-row-gap: 2px;
@@ -22,6 +22,8 @@
     .div3 { 
         grid-area: 2 / 4 / 6 / 5; 
         background-color: #aee6ddbe;
+        padding-top: 10px;
+        padding-left: 20px;
     }
 
     .div4 { 
@@ -30,6 +32,10 @@
         text-align:justify;
         background-color: #aee6ddbe;
     }
+
+    .div3 h3{
+        padding-top: 15px;
+    }   
 
     .div5 { 
         grid-area: 4 / 1 / 5 / 2; 
@@ -50,8 +56,12 @@
     .div8 { 
         grid-area: 5 / 1 / 6 / 4; 
         padding-left: 15px;
+        padding-bottom: 20px;
     }
 
+.div8 .similarpost{
+    padding-bottom: 20px;
+}
 
  .div8 .mainbox{
     padding-top: 50px;

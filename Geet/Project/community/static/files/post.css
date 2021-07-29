@@ -5,12 +5,12 @@
 }
 
 .parent {
-    width: 99%;
+    width: 98%;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 40px repeat(2, 1fr) 1fr;
+    grid-template-rows: 80px repeat(2, 1fr) 120px;
     grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    grid-row-gap: 3px;
   }
   
 .right_side {
@@ -29,6 +29,12 @@
 .sidefeed{
     grid-area: 2 / 2 / 5 / 3; 
     background-color: #aee6ddbe;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.sidefeed h3{
+    padding-top: 15px;
 }
 
 .user_posts{
@@ -41,6 +47,7 @@
     background-color: #aee6ddbe;
 }
 
+
 .user_posts h2{
     padding-top: 20px;
 }
@@ -49,6 +56,7 @@
     grid-area: 4 / 1 / 5 / 2; 
     /* background-color: aqua; */
     padding-left: 10px;
+    padding-bottom: 20px;
 }
 
 .divv4 .newpost{

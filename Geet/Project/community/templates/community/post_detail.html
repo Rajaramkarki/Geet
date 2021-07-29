@@ -16,7 +16,7 @@
     </div>
 
     <div class="div3"> 
-        <p>here will be sidefeed content</p>
+    
         <p>There are total {% total_post %} posts so far.</p>
         <h3>Latest posts</h3>
         {% show_latest_posts 3 %}
@@ -57,7 +57,8 @@
     <div class="div7"> 
         <p><button type="submit" href="{% url 'community:post_share' post.id %}">share</button>
     </div>
-    <div class="div8"> 
+    <div class="div8">
+      <div class="similarpost">
         <h2>Similar Posts</h2>
         {% for post in similar_posts %}
         <p>
@@ -66,6 +67,7 @@
         {% empty %}
         There are no similar posts yet.
         {% endfor %}
+        </div>
         {% for comment in comments %}
 
         <p class="info">

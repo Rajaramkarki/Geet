@@ -1,12 +1,10 @@
 {% extends "accounts/base.html" %}
-{% load static %}
 
 {%  block content %}
-
-        <div class="heading">Start Listening</div>
-     <div class="container3">
-            
-
+<centre>
+    {%if searched%}
+        <div class="heading">You searched for {{searched}}</div>
+        <br/>
         {% for i in song reversed %}
         <div class = "box">
         {% if user.is_authenticated %}
@@ -24,27 +22,8 @@
         
         </div>
         {% endfor %}
-     </div>
-        <script>
-            function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-            }
-
-            window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn1')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content1");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-                }
-            }
-            }
-    </script>
-   
-
-    
-
-  {% endblock %}
+    {%else%}
+        <div class="heading">You didn't search</div>
+    {%endif%}
+</centre>
+{%endblock%}

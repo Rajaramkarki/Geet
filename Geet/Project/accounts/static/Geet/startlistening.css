@@ -10,7 +10,14 @@
     font-family: 'Poppins', sans-serif;
     color: #40978a;
 }
-
+.subheading{
+    font-size: 30px;
+    font-weight: 1000;
+    padding:30px 0;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    color: #40978a;
+}
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
     .textOverImage {
@@ -79,6 +86,69 @@
 }
 
 .textOverImage:hover:before {
+    transform: translateY(0);
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.5s;
+}
+.textOverImage2 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin: 10px;
+    background-size: 100%;
+    background-position: center;
+    transition: 0.5s;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 0 4px #000;
+}
+.textOverImage2:hover {
+    background-size: 110%;
+}
+
+.textOverImage2:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(90%);
+    /*use transform:translateY(100%); to remove footer*/
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 0 8px;
+    content: attr(data-title);
+    transition: 0.5s 0.1s;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.textOverImage2:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 8px;
+    content: attr(data-text);
+    transition: 0.5s;
+    padding-top: 2em;
+    margin-top: 8px;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.textOverImage2:hover:after {
+    transform: translateY(0);
+    transition: 0.5s 0.1s;
+    opacity: 1;
+}
+
+.textOverImage2:hover:before {
     transform: translateY(0);
     padding: 8px;
     background-color: rgba(0, 0, 0, 0.6);

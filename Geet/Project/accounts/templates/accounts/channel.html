@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+
+{%  block content %}
+<div class="container3">
+    <div class="heading">{{request.user}}</div>
+    <div class="subheading">Your Listen Later</div>
+        {% for i in song  %}
+        <div class = "box">
+           
+          <form action="/accounts/history/" id="his"method="POST" >{% csrf_token %}
+            <input type="hidden" name="music_id" value={{i.song_id}} >
+            <a href="/accounts/startlistening/{{i.song_id}}"><button class="textOverImage2" style="background-image:url({{i.image.url}})" 
+            data-title="{{i.song_name}}" data-text="{{i.singer_name}} ">
+            </button>
+            </a>
+        </form >
+        {% endfor %}
+    
+    
+
+
+</div>
+
+{% endblock %}

@@ -7,7 +7,7 @@ from .forms import CreateUser
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from django.contrib.auth.decorators import login_required
-from django.db.models import Case, When
+from django.db.models import Case, When,Q
 
 # Create your views here.
 
@@ -134,3 +134,11 @@ def history(request):
     return render(request, 'accounts/history.html',{'song':song})
 
 
+def search(request):
+    if request.method=="POST":
+        searched = request.POST['searched']
+        song=Song.objects.filter(song_name__iexact =searched)
+
+        return render(request, 'accounts/search.html',{'searched':searched,'song':song})
+    else:
+        return render(request, 'accounts/search.html')

@@ -18,6 +18,12 @@
                     <li><a href="{% url 'accounts:startlistening' %}">Start Listening</a></li>
                     <li><a href="{% url 'accounts:upload' %}">Upload</a></li>
                     <li><a href="{% url 'community:post' %}">Community</a></li>
+                    <li>
+                    <form class="d-flex" method="POST"action="/accounts/search/">{%csrf_token%}
+                        <input class="sharing" type="search" placeholder="search" aria-label="search" name="searched">
+                        <button type="submit">Search</button>
+                    </form>
+                    </li>   
                     {% if not user.is_authenticated %}
                     <li class = "dropdown"><button class="dropbtn">Connect</button>
                         <div class = "dropdown-content">
@@ -40,7 +46,7 @@
                     </div>
 
                     {% endif %}
-
+                   
 
                 </li>
                 </ul>

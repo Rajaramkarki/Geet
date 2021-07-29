@@ -16,6 +16,7 @@ urlpatterns = [
     path('r/<str:channel>', views.channel, name='channel'),
     path('listenlater/', views.listenlater , name="listenlater"),
     path('history/',views.history ,name='history'),
+    path('search/',views.search ,name='search'),
 
 ]
 

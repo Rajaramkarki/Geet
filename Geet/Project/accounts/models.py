@@ -12,6 +12,7 @@ class Song(models.Model):
     song_genre = models.CharField(max_length=1000, default="")
     song = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return self.song_name

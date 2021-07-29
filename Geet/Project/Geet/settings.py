@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "accounts",
     "community",
-    "crispy_forms"
+    "crispy_forms",
+    "taggit",
+    "markdown_deux",
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#smtp configuration
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER='adityakhadka777@gmail.com'
+EMAIL_HOST_PASSWORD='aditya.777'

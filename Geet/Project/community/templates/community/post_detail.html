@@ -1,6 +1,7 @@
 {% extends 'community/base.html' %}
 {% block title %}{{ post.title }}{% endblock %}
-
+{% load markdown_deux_tags %}
+{% load posts_tags %}
 {% block content %}
 
 
@@ -16,21 +17,32 @@
 
     <div class="div3"> 
         <p>here will be sidefeed content</p>
+        <p>There are total {% total_post %} posts so far.</p>
+        <h3>Latest posts</h3>
+        {% show_latest_posts 3 %}
+
+        <h3>most commented posts</h3>
+        {% get_most_commented_posts as most_commented_post %}
+        <ul>
+            {% for post in most_commented_post %}
+            <li>
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
+
 
     <div class="div4"> 
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
 
-        {{ post.body|linebreaksbr }}  
+        {{ post.body|markdown }}  
         
         </p>
 
-          <audio id = "mysong" controls style="padding-top:10px;">
-                <source src = "{{song.song.url}}" type = "audio/mp3">
-        </audio>
-
+        
     </div>
 
 {% if post.author == user %}
@@ -46,14 +58,21 @@
     <div class="div7"> 
         <p><button type="submit" href="{% url 'community:post_share' post.id %}">share</button>
     </div>
-
     <div class="div8"> 
+        <h2>Similar Posts</h2>
+        {% for post in similar_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+        {% empty %}
+        There are no similar posts yet.
+        {% endfor %}
         {% for comment in comments %}
 
         <p class="info">
             Comment {{ forloop.counter }} by {{ comment.user }} - {{ comment.created_at }}
         </p>
-        {{ comment.body|linebreaks }}
+        {{ comment.body|markdown }}
 
         {% empty %}
         <p>There are no comments yet.</p>
@@ -62,6 +81,7 @@
         {% if new_comment %}
         <h2>Your Comment has been added</h2>
         {% else %}
+   
 
         {% if user.is_authenticated %}
        <div class = "mainbox">

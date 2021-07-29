@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from django.db.models import Manager
 from django.urls import reverse
 from django.conf import settings
+from taggit.managers import TaggableManager
 
 
 # Create your models here.
@@ -30,6 +31,7 @@ class Postmodel(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="draft")
     object = models.Manager()
     published = Querymanager()
+    tags = TaggableManager()
 
     def get_absolute_url(self):
         return reverse('community:post_detail',

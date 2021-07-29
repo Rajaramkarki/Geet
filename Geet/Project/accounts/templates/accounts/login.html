@@ -60,6 +60,7 @@
 		}
 		.login_container {
 			padding: 0 2rem;
+			padding-bottom: 1px;
 		}
 		.input-group-text {
 			background: #42958e !important;
@@ -78,6 +79,9 @@
 			color: #fff;
 			padding: 10px;
 			margin-top: 10px;
+		}
+		.ml-1{
+			padding-top:6px;
 		}
 	</style>
 </head>
@@ -119,7 +123,10 @@
 				{% for message in messages %}
 					<p id="messages">{{message}}</p>
 				{% endfor %}
-
+				<div class="d-flex justify-content-center links">
+				   <a href="{% url 'accounts:password_reset' %}" class="ml-1">Forgot Password?</a>
+                </div>
+                
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
 						Don't have an account? <a href="{% url 'accounts:signup' %}" class="ml-2">Sign Up</a>

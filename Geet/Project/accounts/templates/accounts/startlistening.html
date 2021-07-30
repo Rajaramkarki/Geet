@@ -5,8 +5,13 @@
 
         <div class="heading">Start Listening</div>
      <div class="container3">
-            
-
+        <div class="searchbar">
+                <form class="d-flex" method="POST"action="/accounts/search/">{%csrf_token%}
+                        <input class="sharing" type="search" placeholder=" search" aria-label="search" name="searched">
+                        <button class = "btn" style="width: 100px; height: 30px" type="submit">Search</button>
+                </form>
+        
+        </div>
         {% for i in song reversed %}
         <div class = "box">
         {% if user.is_authenticated %}

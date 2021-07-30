@@ -2,6 +2,23 @@
     padding-left: 70px;
 }
 
+.container3 .searchbar{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.container3 .sharing{
+    width: 230px;
+     height: 30px;
+     border-radius: 3px;
+     background-color: #9ed1c9;
+     border-color:#1b8878 ;
+     outline: none;
+     border: none;
+}
+
+
+
  .heading{
     font-size: 40px;
     font-weight: 1000;

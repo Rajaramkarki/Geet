@@ -44,7 +44,7 @@
         <div class="duration">
            <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()" >
         </div>
-           <button id="auto" onclick="autoplay_switch()">Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+          
            <div>
               {% if user.is_authenticated %} 
             <form action="/accounts/listenlater/" method="POST">{% csrf_token %}

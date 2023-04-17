@@ -6,7 +6,7 @@
         <div class="heading">You searched for {{searched}}</div>
         <br/>
         {% for i in song reversed %}
-        <div style="align-items: center;" class = "box">
+        <div class = "box">
         {% if user.is_authenticated %}
         <form action="/accounts/history/" id="his"method="POST" >{% csrf_token %}
             <input type="hidden" name="music_id" value={{i.song_id}} >

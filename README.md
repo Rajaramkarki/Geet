@@ -1,19 +1,30 @@
-# Geetshared
+Geetshared
+Geetshared is a simple music streaming website built with HTML, CSS, Django, and PostgreSQL. It allows users to upload and listen to music, as well as participate in a music-focused community.
 
-A simple music streaming website made with HTML and CSS for the front end and Django and PostgreSQL for the back end.
+Features
+User-friendly navigation: The website is designed to be easy to navigate, with clear instructions provided for uploading and playing music. Users with basic English knowledge can easily use all of the website's features.
 
-The basic ER diagram is as follows:
-![image](https://user-images.githubusercontent.com/67723187/232459950-036ced34-817d-4c24-8716-5f54f98e0b61.png)
+Log In/ Sign Up: Users can create personalized accounts, with certain features only accessible to logged-in users.
 
-The features that the website provides is
-•	User friendly: The navigation is pretty easy to understand. All the instructions are given when uploading a music or playing a music. Anyone with basic English knowledge can easily navigate through the website can use all the features   
-•	Log In/ Sign Up: Every website now needs a personalized access to each member. In our website, there is a feature to create your own account. There are certain features in the website which can be accessed to logged in users only.   
-•	Uploading Music: Since our website is all about music, you can upload your own music to the website. Give in the name of the song, artist, a picture and the music file, then it will be uploaded to the website. All these data of the song are stored in the database.  
-•	Listening Music: All the uploaded music can be accessed by everyone on the website. There is a navigation called ‘Start Listening’ where you can listen to all the songs uploaded by other people.  
-•	Search Songs: There will be tons of music in the website, so you can also search the music you like among the list.  
-•	Listen later: Just like watch later function on YouTube, we have created a function which lets you store a song on a list to listen later. It is only accessible to logged in users. Select any song you like and there’s a button to add it to listen later, which gets saved to that user’s list. It can be accessed by   
-•	Music History: All the songs you listen to, are saved in the history. This is only accessible to logged in users. There is a list of songs in the history of a profile which are all the songs you have listened to from the website.  
-•	Community: Community is a place where you can post about something, comment on other’s post, etc. This is designed to be a platform where you can share your views, reviews of songs, articles related to music, or anything in particular related to music that you want to share with other people who share common interest in music. You can create a post, update or delete your posts and comment on other’s post. You can see posts related to certain tags e.g., reviews, rant, history, etc.  
+Music uploading: Users can upload their own music to the website, providing the song name, artist, picture, and music file. All of this data is stored in the website's database.
+
+Music listening: All uploaded music can be accessed by everyone on the website, with a navigation option to start listening to all songs uploaded by other users.
+
+Song search: Users can search for specific songs among the website's large collection.
+
+Listen later: Similar to the "Watch later" function on YouTube, users can save songs to a "Listen later" list. This feature is only accessible to logged-in users, and the list is specific to each user's account.
+
+Music history: All of the songs that a user listens to are saved in their history. This feature is only accessible to logged-in users and provides a list of all the songs that the user has listened to on the website.
+
+Community: The website has a community section where users can post about music-related topics, comment on other users' posts, and interact with other music enthusiasts. Users can create, update, or delete their posts, and filter posts by tags like reviews, rants, and history.
+
+
+ER Diagram
+![image](https://user-images.githubusercontent.com/67723187/232461685-2dda7ca4-726c-4ced-82a3-505a46d40e2e.png)
+
+
+
+Thank you for using Geetshared! 
 
 
  The homepage of the website is 

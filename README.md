@@ -15,8 +15,8 @@ Geet is a simple music streaming website built with HTML, CSS, Django, and Postg
  8. **Community**: The website has a community section where users can post about music-related topics, comment on other users' posts, and interact with other music enthusiasts. Users can create, update, or delete their posts, and filter posts by tags like reviews, rants, and history.
 
 ## ER Diagram
+![image](https://user-images.githubusercontent.com/67723187/232462846-b19c9129-0db6-488b-897c-e8b2a9d8f3a0.png)
 
---link here
 
 ## Few Screenshots of the Website
  The homepage of the website is 
